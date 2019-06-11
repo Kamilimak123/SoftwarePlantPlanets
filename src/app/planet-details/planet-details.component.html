@@ -1,0 +1,22 @@
+<a routerLink=''><button mat-button><i class="material-icons">arrow_back</i> Back to list</button></a>
+<h1><img src="..\..\assets\icons\planet.jpg" alt="...">   {{planetInfo.name}}</h1>
+
+<mat-card *ngIf="isLoading" 
+ style="display: flex; justify-content: center; align-items: center">
+<mat-progress-spinner 
+  color="primary" 
+  mode="indeterminate">
+</mat-progress-spinner>
+</mat-card>
+<mat-list *ngIf="!isLoading">
+  <mat-list-item> <i class="material-icons">replay</i>  Rotation period: {{planetInfo.rotation_period}} </mat-list-item>
+  <mat-list-item> <i class="material-icons">loop</i>  Orbital period: {{planetInfo.orbital_period}} </mat-list-item>
+  <mat-list-item> <i class="material-icons">waves</i>  Diameter: {{planetInfo.diameter}} </mat-list-item>
+  <mat-list-item> <i class="material-icons">cloud</i>  Climate: {{planetInfo.climate}} </mat-list-item>
+  <mat-list-item> <i class="material-icons">arrow_downward</i>  Gravity: {{planetInfo.gravity}} </mat-list-item>
+  <mat-list-item> <i class="material-icons">terrain</i>  Terrain: {{planetInfo.terrain}} </mat-list-item>
+  <mat-list-item> <i class="material-icons">waves</i>  Surface water: {{planetInfo.surface_water}} </mat-list-item>
+  <mat-list-item> <i class="material-icons">people</i>  Population: {{planetInfo.population}} </mat-list-item>
+ </mat-list>
+
+ 
