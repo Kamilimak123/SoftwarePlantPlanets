@@ -18,7 +18,6 @@ export class PlanetsComponent implements OnInit {
   planets: any = [];
   planetsList: any = [];
   planetsCount: number;
-  planetsNext: string;
   constructor(private planetsService: PlanetsService) { }
   planetsUrl = 'https://swapi.co/api/planets/';
 
@@ -38,10 +37,8 @@ export class PlanetsComponent implements OnInit {
   showPlanets() {
     this.planets = [];
     this.planetsService.getPlanets(this.planetsUrl).subscribe((data: {}) => {
-      //console.log(data);
       this.planets = data;
       this.planetsCount = this.planets.count;
-      this.planetsNext = this.planets.next;
       this.planetsList = this.planets.results;
       for (var i = 0; i < (this.planetsCount / 10) - 1; i++) {
         this.planetsService.getPlanets(this.planetsUrl + '?page=' + (i + 2)).subscribe((data: {}) => {
@@ -50,15 +47,9 @@ export class PlanetsComponent implements OnInit {
           this.dataSource = new MatTableDataSource<Object>(this.planetsList);
           this.isLoading = false;
           this.dataSource.paginator = this.paginator;
-          if (this.planetsList.length == this.planetsCount) {
-            
-            console.log(this.dataSource);
-          }
-          
         });
       }
     });
-
   }
 
   ngOnInit() {

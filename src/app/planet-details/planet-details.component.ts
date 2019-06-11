@@ -9,26 +9,20 @@ import { PlanetsService } from '../planets/planets.service';
 })
 export class PlanetDetailsComponent implements OnInit {
   planetInfo: any = [];
-  planetsList: any = [];
-  planetsCount: number;
-  planetsNext: string;
-  constructor(private planetsService: PlanetsService) { }
   planetsUrl = 'https://swapi.co/api/planets/';
-
   isLoading = true;
 
-  showPlanets() {
+  constructor(private planetsService: PlanetsService) { }
+
+  showInfo() {
     this.planetInfo = [];
-    this.planetsService.getPlanets(this.planetsUrl + document.URL.split('/')[document.URL.split('/').length-1]).subscribe((data: {}) => {
-      //console.log(data);
+    this.planetsService.getPlanets(this.planetsUrl + document.URL.split('/')[document.URL.split('/').length - 1]).subscribe((data: {}) => {
       this.planetInfo = data;
       this.isLoading = false;
     });
-
   }
 
   ngOnInit() {
-    this.showPlanets();
+    this.showInfo();
   }
-
 }
