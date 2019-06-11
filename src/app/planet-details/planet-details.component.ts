@@ -19,7 +19,7 @@ export class PlanetDetailsComponent implements OnInit {
 
   showPlanets() {
     this.planetInfo = [];
-    this.planetsService.getPlanets(this.planetsUrl + document.URL.split('/')[4]).subscribe((data: {}) => {
+    this.planetsService.getPlanets(this.planetsUrl + document.URL.split('/')[document.URL.split('/').length-1]).subscribe((data: {}) => {
       //console.log(data);
       this.planetInfo = data;
       this.isLoading = false;
